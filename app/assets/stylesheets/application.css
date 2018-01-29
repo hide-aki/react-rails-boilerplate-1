@@ -10,8 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *= require lib/chart.min
- *= require lib/flag-icon.min
- *= require lib/font-awesome.min
- *= require lib/simple-line-icons.min
+ *= require lib/flag-icon/flag-icon
+ *= require lib/font-awesome
+ *= require lib/simple-line-icons
  *= require style
  */
