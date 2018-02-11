@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require vendors/jquery.min.js
+//= require jquery_ujs
 //= require vendors/popper.min.js
 //= require vendors/bootstrap.min.js
 //= require vendors/pace.min.js

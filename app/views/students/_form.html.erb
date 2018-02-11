@@ -1,0 +1,40 @@
+<div class="card-body">
+  <form action="" method="post" class="form-horizontal">
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label" for="hf-email">Email</label>
+      <div class="col-md-9">
+        <input type="email" id="hf-email" name="hf-email" class="form-control" placeholder="Enter Email..">
+        <span class="help-block">Please enter your email</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label" for="hf-password">Password</label>
+      <div class="col-md-9">
+        <input type="password" id="hf-password" name="hf-password" class="form-control" placeholder="Enter Password..">
+        <span class="help-block">Please enter your password</span>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="card-footer">
+  <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+  <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+</div>
+<%= simple_form_for(@student, as: 'student_horizontal', html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
+                    wrapper_mappings: {
+                        check_boxes: :horizontal_radio_and_checkboxes,
+                        radio_buttons: :horizontal_radio_and_checkboxes,
+                        file: :horizontal_file_input,
+                        boolean: :horizontal_boolean
+                    })  do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group row">
+    <%= f.input :name %>
+    <%= f.input :age %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

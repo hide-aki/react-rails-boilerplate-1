@@ -20,4 +20,4 @@
 .idea
 config/database.yml
 config/secrets.yml
-assets/
+public/assets/
