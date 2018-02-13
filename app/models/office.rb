@@ -1,2 +1,0 @@
-class Office < ApplicationRecord
-end
