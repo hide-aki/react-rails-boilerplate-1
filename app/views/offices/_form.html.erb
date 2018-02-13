@@ -1,8 +1,9 @@
-<%= simple_form_for(@student)do |f| %>
+<%= simple_form_for(@office) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :name %>
-  <%= f.input :age %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
