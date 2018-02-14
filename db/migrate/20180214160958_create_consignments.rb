@@ -9,7 +9,7 @@ class CreateConsignments < ActiveRecord::Migration[5.1]
       t.integer :assigned_by
       t.integer :data_entry_by
       t.integer :completed_by # who add success status
-      t.string :tracking_id, null: false
+      t.string :tracking_code, null: false
       t.string :receiver_name, null: false
       t.string :receiver_phone, null: false
       t.text :receiver_addr, null: false
@@ -30,7 +30,7 @@ class CreateConsignments < ActiveRecord::Migration[5.1]
       t.timestamps
     end
     add_index :consignments, :merchant_id
-    add_index :consignments, :tracking_id, unique: true
+    add_index :consignments, :tracking_code, unique: true
     add_index :consignments, :rider
   end
 end

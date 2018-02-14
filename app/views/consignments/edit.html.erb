@@ -1,6 +1,14 @@
-<h1>Editing Consignment</h1>
-
-<%= render 'form', consignment: @consignment %>
-
-<%= link_to 'Show', @consignment %> |
-<%= link_to 'Back', consignments_path %>
+<div class="row justify-content-center login">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Edit Delivery</strong>
+        <div class="pull-right">
+          <%= link_to 'Show', @consignment, class:  'btn btn-sm btn-primary'%>
+          <%= link_to 'Back', consignments_path, class:  'btn btn-sm btn-danger'%>
+        </div>
+      </div>
+      <%= render 'form', consignment: @consignment %>
+    </div>
+  </div>
+</div>

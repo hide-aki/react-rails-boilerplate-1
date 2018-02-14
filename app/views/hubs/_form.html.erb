@@ -1,11 +1,12 @@
 <%= simple_form_for(@hub) do |f| %>
   <%= f.error_notification %>
+  <%#= f.input :created_by, as: :hidden, :input_html => { value: current_user.id }%>
 
     <div class="card-body">
-    <div class="form-group">
-      <%= f.label :name, 'Hub Name' %>
-      <%= f.input :name, label: false, placeholder: 'Hub name' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :name, 'Hub Name' %>
+        <%= f.input :name, label: false, placeholder: 'Hub name' %>
+      </div>
 
     <!--<div class="row">-->
 

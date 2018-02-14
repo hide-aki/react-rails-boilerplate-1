@@ -6,4 +6,7 @@ class Plan < ApplicationRecord
   # validation
   validates :name, presence: true, uniqueness: true
   validates :cost, presence: true
+
+  # Queries
+  scope :newest_first, lambda { order("plans.created_at DESC") }
 end

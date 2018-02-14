@@ -1,25 +1,80 @@
 <%= simple_form_for(@consignment) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :merchant_id %>
-    <%= f.input :plan_id %>
-    <%= f.input :tracking_id %>
-    <%= f.input :receiver_name %>
-    <%= f.input :receiver_phone %>
-    <%= f.input :receiver_addr %>
-    <%= f.input :amount %>
-    <%= f.input :weight %>
-    <%= f.input :charge %>
-    <%= f.input :additional_cost %>
-    <%= f.input :compensation %>
-    <%= f.input :payment_status %>
-    <%= f.input :merchant_order_no %>
-    <%= f.input :package_description %>
-    <%= f.input :delivered_on %>
-  </div>
+    <div class="card-body">
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+      <div class="form-group">
+        <%= f.label :plan, 'Select Plan' %>
+        <%= f.association :plan, collection: Plan.order(:name), label: false, prompt: "Choose a Plan" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :tracking_code, 'Tracking Code' %>
+        <%= f.input :tracking_code, label: false, placeholder: 'Trancking code' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :merchant, 'Select Merchant' %>
+        <%= f.association :merchant, collection: Merchant.order(:name), label: false, prompt: "Choose a Merchant" %>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-sm-4">
+          <%= f.label :amount, 'Amount' %>
+          <%= f.input :amount, label: false, placeholder: 'Amount' %>
+        </div>
+
+        <div class="form-group col-sm-4">
+          <%= f.label :weight, 'Weight' %>
+          <%= f.input :weight, label: false, placeholder: 'Weight' %>
+        </div>
+
+        <div class="form-group col-sm-4">
+          <%= f.label :charge, 'Charge' %>
+          <%= f.input :charge, label: false, placeholder: 'Charge' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <%= f.label :additional_cost, 'Additional Cost' %>
+          <%= f.input :additional_cost, label: false, placeholder: 'Additional Cost' %>
+        </div>
+
+        <div class="form-group col-sm-6">
+          <%= f.label :compensation, 'Compensation' %>
+          <%= f.input :compensation, label: false, placeholder: 'Compensation' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :payment_status, 'Payment Status' %>
+        <%= f.select :payment_status, options_for_select(@payment_status), label: false, prompt: "Choose a Payment Status" %>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <%= f.label :merchant_order_no, 'Merchant Order No' %>
+          <%= f.input :merchant_order_no, label: false, placeholder: 'Merchant Order No' %>
+        </div>
+
+        <div class="form-group col-sm-6">
+          <%= f.label :package_description, 'Package Description' %>
+          <%= f.input :package_description, label: false, placeholder: 'Package Description' %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-inputs">
+      <%= f.input :receiver_name %>
+      <%= f.input :receiver_phone %>
+      <%= f.input :receiver_addr %>
+
+      <%= f.input :delivered_on %>
+    </div>
+
+    <div class="card-footer">
+      <%= f.button :submit, class: 'btn btn-sm btn-primary' %>
+    </div>
 <% end %>

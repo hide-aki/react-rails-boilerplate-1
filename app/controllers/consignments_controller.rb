@@ -1,5 +1,6 @@
 class ConsignmentsController < ApplicationController
   before_action :set_consignment, only: [:show, :edit, :update, :destroy]
+  before_action :set_payment_status_options, only: [:new, :create, :edit, :update]
 
   # GET /consignments
   # GET /consignments.json
@@ -67,8 +68,13 @@ class ConsignmentsController < ApplicationController
       @consignment = Consignment.find(params[:id])
     end
 
+  # Set payment status
+  def set_payment_status_options
+    @payment_status = {Given: :given, Not_yet: :not_yet }
+  end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def consignment_params
-      params.require(:consignment).permit(:merchant_id, :plan_id, :tracking_id, :receiver_name, :receiver_phone, :receiver_addr, :amount, :weight, :charge, :additional_cost, :compensation, :payment_status, :merchant_order_no, :package_description, :delivered_on)
+      params.require(:consignment).permit(:merchant_id, :plan_id, :tracking_code, :receiver_name, :receiver_phone, :receiver_addr, :amount, :weight, :charge, :additional_cost, :compensation, :payment_status, :merchant_order_no, :package_description, :delivered_on)
     end
 end
