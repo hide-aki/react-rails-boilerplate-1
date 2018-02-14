@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :plans
+  has_many :hubs
+  has_many :merchant #, optional: true
 
   # Set user status
   enum status: {active: 1, block: 0}

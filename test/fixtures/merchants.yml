@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hub_id: 1
+  name: MyString
+  representative_name: MyString
+  website: MyString
+
+two:
+  hub_id: 1
+  name: MyString
+  representative_name: MyString
+  website: MyString

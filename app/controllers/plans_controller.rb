@@ -25,6 +25,8 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
+    @plan.created_by = current_user.id
+    @plan.updated_by = current_user.id
 
     respond_to do |format|
       if @plan.save
@@ -40,6 +42,7 @@ class PlansController < ApplicationController
   # PATCH/PUT /plans/1
   # PATCH/PUT /plans/1.json
   def update
+    @plan.updated_by = current_user.id
     respond_to do |format|
       if @plan.update(plan_params)
         format.html { redirect_to @plan, notice: 'Plan was successfully updated.' }
