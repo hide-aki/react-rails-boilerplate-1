@@ -2,3 +2,21 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+
+.table th, .table td {
+  padding: 0.3rem .8rem;
+  vertical-align: middle;
+}
+
+.card {
+  margin-top: 1.5rem;
+}
+
+.alert-message {
+  position: relative;
+  top: 13px;
+
+  p {
+   text-align: center;
+  }
+}

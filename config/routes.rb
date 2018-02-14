@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :merchants
   # Custom devise
   devise_for :users, controllers: {
       sessions: 'users/sessions',
@@ -17,9 +15,8 @@ Rails.application.routes.draw do
 
   resources :plans
   resources :hubs
-
-  resources :students
-
+  resources :consignments
+  resources :merchants
   get 'pages/about'
   root 'dashboard#index'
 end

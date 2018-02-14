@@ -7,5 +7,6 @@ class CreateHubs < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :hubs, :name, unique: true
   end
 end

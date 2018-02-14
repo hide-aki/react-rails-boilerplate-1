@@ -4,7 +4,7 @@ class HubsController < ApplicationController
   # GET /hubs
   # GET /hubs.json
   def index
-    @hubs = Hub.all
+    @hubs = Hub.newest_first.page params[:page]
   end
 
   # GET /hubs/1

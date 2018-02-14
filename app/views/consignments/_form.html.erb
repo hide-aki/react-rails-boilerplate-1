@@ -1,0 +1,25 @@
+<%= simple_form_for(@consignment) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :merchant_id %>
+    <%= f.input :plan_id %>
+    <%= f.input :tracking_id %>
+    <%= f.input :receiver_name %>
+    <%= f.input :receiver_phone %>
+    <%= f.input :receiver_addr %>
+    <%= f.input :amount %>
+    <%= f.input :weight %>
+    <%= f.input :charge %>
+    <%= f.input :additional_cost %>
+    <%= f.input :compensation %>
+    <%= f.input :payment_status %>
+    <%= f.input :merchant_order_no %>
+    <%= f.input :package_description %>
+    <%= f.input :delivered_on %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

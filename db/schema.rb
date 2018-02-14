@@ -10,7 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180214132516) do
+ActiveRecord::Schema.define(version: 20180214160958) do
+
+  create_table "consignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "merchant_id"
+    t.integer "plan_id"
+    t.integer "current_hub_id"
+    t.integer "target_hub_id"
+    t.integer "rider"
+    t.integer "assigned_by"
+    t.integer "data_entry_by"
+    t.integer "completed_by"
+    t.string "tracking_id", null: false
+    t.string "receiver_name", null: false
+    t.string "receiver_phone", null: false
+    t.text "receiver_addr", null: false
+    t.decimal "price", precision: 8, scale: 2, default: "0.0", null: false
+    t.float "weight", limit: 24
+    t.decimal "charge", precision: 8, scale: 2, default: "0.0", null: false
+    t.decimal "additional_cost", precision: 8, scale: 2, default: "0.0", null: false
+    t.decimal "compensation", precision: 8, scale: 2, default: "0.0", null: false
+    t.integer "payment_status", default: 0, null: false
+    t.string "merchant_order_no"
+    t.string "package_description"
+    t.datetime "delivered_on"
+    t.datetime "assigned_on"
+    t.datetime "completed_on"
+    t.datetime "data_entry_on"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_consignments_on_merchant_id"
+    t.index ["rider"], name: "index_consignments_on_rider"
+    t.index ["tracking_id"], name: "index_consignments_on_tracking_id", unique: true
+  end
 
   create_table "hubs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
@@ -18,16 +51,19 @@ ActiveRecord::Schema.define(version: 20180214132516) do
     t.integer "updated_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_hubs_on_name", unique: true
   end
 
   create_table "merchants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "hub_id"
     t.string "name"
+    t.string "business_owner"
     t.string "representative_name"
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_merchants_on_name", unique: true
   end
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -37,6 +73,7 @@ ActiveRecord::Schema.define(version: 20180214132516) do
     t.integer "updated_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_plans_on_name", unique: true
   end
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
