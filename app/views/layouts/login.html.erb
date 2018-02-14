@@ -9,38 +9,38 @@
   <meta name="author" content="Łukasz Holeczek">
   <meta name="keyword" content="Logistic Management System">
   <link rel="shortcut icon" href="img/favicon.png">
-  <title>Logistic Management System | <%= @page_title || "Dashboard" %></title>
+  <title>Logistic Management System | <%= @page_title || "Login" %></title>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <style>
+    body {
+      background: #0e1a44c9;
+    }
+    .login .flash.alert {
+      background: mediumvioletred;
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
 
-  <%= render 'shared/header' %>
-
   <div class="app-body">
-    <%= render 'shared/sidebar' %>
 
-    <main class="main">
+      <%# if !flash[:notice].blank? || !flash[:alert].blank? %>
+          <!--<p class="notice"><%#= notice %></p>-->
+          <!--<p class="alert"><%#= alert %></p>-->
+    <%# end %>
 
-      <%= render 'shared/breadcrumb' %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-      <% if !flash[:notice].blank? || !flash[:alert].blank? %>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-    <% end %>
-
-      <div class="container-fluid">
-        <%= yield %>
-      </div>
-
-    </main>
-
-    <%= render 'shared/aside' %>
   </div>
-  <%= render 'shared/footer' %>
 
+  <%= render 'shared/footer' %>
 
 </body>
 </html>
