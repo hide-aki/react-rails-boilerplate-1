@@ -3,10 +3,13 @@ class Consignment < ApplicationRecord
   belongs_to :plan, optional: true
   belongs_to :hub, class_name: 'Hub', foreign_key: "current_hub_id", optional: true
   belongs_to :hub, class_name: 'Hub', foreign_key: "target_hub_id", optional: true
-  belongs_to :user, class_name: 'User', foreign_key: "rider"
-  belongs_to :user, class_name: 'User', foreign_key: "assigned_by"
-  belongs_to :user, class_name: 'User', foreign_key: "data_entry_by"
-  belongs_to :user, class_name: 'User', foreign_key: "completed_by"
+  belongs_to :user, class_name: 'User', foreign_key: "rider", optional: true
+  belongs_to :user, class_name: 'User', foreign_key: "assigned_by", optional: true
+  belongs_to :user, class_name: 'User', foreign_key: "data_entry_by", optional: true
+  belongs_to :user, class_name: 'User', foreign_key: "completed_by", optional: true
+
+  # Queries
+  scope :newest_first, lambda { order("consignments.created_at DESC") }
 
   # Set receiver payment status value
   enum payment_status: { given: 1, not_yet: 2 }

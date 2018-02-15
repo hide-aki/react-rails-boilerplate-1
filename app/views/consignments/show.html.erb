@@ -1,79 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="animated fadeIn">
+  <div class="card">
 
-<p>
-  <strong>Merchant:</strong>
-  <%= @consignment.merchant_id %>
-</p>
+    <div class="card-body row">
+      <h4 class="card-title col-10">Consignment Details</h4>
+      <div class="col-2 text-right">
+        <%= link_to 'Edit', edit_consignment_path(@consignment), class: 'btn btn-primary' %>
+        <%= link_to 'Back', consignments_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <div class="card-body row">
+      <ul class="list-group list-group-flush show-list-group col-6">
+        <li class="list-group-item"><strong>Merchant: </strong> <%= @consignment.merchant_id %></li>
+        <li class="list-group-item"><strong>Plan: </strong> <%= @consignment.plan_id %></li>
+        <li class="list-group-item"><strong>Tracking Code: </strong> <%= @consignment.tracking_code %></li>
+        <li class="list-group-item"><strong>Receiver name: </strong> <%= @consignment.receiver_name %></li>
+        <li class="list-group-item"><strong>Receiver phone: </strong> <%= @consignment.receiver_phone %></li>
+        <li class="list-group-item"><strong>Receiver Address: </strong> <%= @consignment.receiver_addr %></li>
+        <li class="list-group-item"><strong>Amount: </strong> <%= @consignment.amount %></li>
+        <li class="list-group-item"><strong>Weight: </strong> <%= @consignment.weight %></li>
+        <li class="list-group-item"><strong>Charge: </strong> <%= @consignment.charge %></li>
+        <li class="list-group-item"><strong>Additional cost: </strong> <%= @consignment.additional_cost %></li>
+        <li class="list-group-item"><strong>Compensation: </strong> <%= @consignment.compensation %></li>
+        <li class="list-group-item"><strong>Payment status: </strong> <%= @consignment.payment_status %></li>
+        <li class="list-group-item"><strong>Merchant order no: </strong> <%= @consignment.merchant_order_no  %></li>
+      </ul>
 
-<p>
-  <strong>Plan:</strong>
-  <%= @consignment.plan_id %>
-</p>
-
-<p>
-  <strong>Tracking Code:</strong>
-  <%= @consignment.tracking_code %>
-</p>
-
-<p>
-  <strong>Receiver name:</strong>
-  <%= @consignment.receiver_name %>
-</p>
-
-<p>
-  <strong>Receiver phone:</strong>
-  <%= @consignment.receiver_phone %>
-</p>
-
-<p>
-  <strong>Receiver addr:</strong>
-  <%= @consignment.receiver_addr %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @consignment.amount %>
-</p>
-
-<p>
-  <strong>Weight:</strong>
-  <%= @consignment.weight %>
-</p>
-
-<p>
-  <strong>Charge:</strong>
-  <%= @consignment.charge %>
-</p>
-
-<p>
-  <strong>Additional cost:</strong>
-  <%= @consignment.additional_cost %>
-</p>
-
-<p>
-  <strong>Compensation:</strong>
-  <%= @consignment.compensation %>
-</p>
-
-<p>
-  <strong>Payment status:</strong>
-  <%= @consignment.payment_status %>
-</p>
-
-<p>
-  <strong>Merchant order no:</strong>
-  <%= @consignment.merchant_order_no %>
-</p>
-
-<p>
-  <strong>Package description:</strong>
-  <%= @consignment.package_description %>
-</p>
-
-<p>
-  <strong>Delivered on:</strong>
-  <%= @consignment.delivered_on %>
-</p>
-
-<%= link_to 'Edit', edit_consignment_path(@consignment) %> |
-<%= link_to 'Back', consignments_path %>
+      <ul class="list-group list-group-flush show-list-group col-6">
+        <li class="list-group-item"><strong>Package description: </strong> <%= @consignment.package_description %></li>
+        <li class="list-group-item"><strong>Delivered on: </strong> <%= @consignment.delivered_on %></li>
+        <li class="list-group-item"><strong>Current Hub: </strong> <%= @consignment.current_hub_id %></li>
+        <li class="list-group-item"><strong>Targeted Hub: </strong> <%= @consignment.target_hub_id %></li>
+        <li class="list-group-item"><strong>Rider: </strong> <%= @consignment.rider %></li>
+        <li class="list-group-item"><strong>Assigned By: </strong> <%= @consignment.assigned_by %></li>
+        <li class="list-group-item"><strong>Data Entry By: </strong> <%= @consignment.data_entry_by %></li>
+        <li class="list-group-item"><strong>Delivery Completed By: </strong> <%= @consignment.completed_by %></li>
+        <li class="list-group-item"><strong>Assigned Time: </strong> <%= @consignment.assigned_on %></li>
+        <li class="list-group-item"><strong>Delivery Completed Time: </strong> <%= @consignment.completed_on %></li>
+        <li class="list-group-item"><strong>Data Entry Time: </strong> <%= @consignment.data_entry_on %></li>
+        <li class="list-group-item"><strong>Delivery Status: </strong> <%= @consignment.status %></li>
+      </ul>
+    </div>
+  </div>
+</div>

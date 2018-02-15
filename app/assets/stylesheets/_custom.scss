@@ -24,3 +24,13 @@ body {
 .has-error .help-block {
   color: red;
 }
+
+.form-control {
+  border-radius: 4px;
+}
+
+.show-list-group {
+  .list-group-item {
+    border: 0;
+  }
+}
