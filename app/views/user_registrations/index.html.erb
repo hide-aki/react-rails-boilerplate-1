@@ -1,0 +1,42 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Users
+      <%= link_to 'Create User', new_user_path, class:  'btn btn-sm btn-primary pull-right'%>
+    </div>
+    <div class="card-body">
+      <table class="table table-responsive-sm table-striped">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+              <tr>
+                <td><%= user.email %></td>
+                <td><%= user.status %></td>
+                <td>
+                  <%= link_to user_details_path(user), class: 'btn btn-success' do %>
+                      <i class="fa fa-search-plus "></i>
+                  <% end %>
+
+                  <%= link_to edit_user_path(user), class: 'btn btn-info' do %>
+                      <i class="fa fa-edit "></i>
+                  <% end %>
+
+                  <%#= link_to plan, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'} do %>
+                      <!--<i class="fa fa-trash-o "></i>-->
+                  <%# end %>
+                </td>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%#= paginate @plans %>
+    </div>
+  </div>
+</div>
+

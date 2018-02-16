@@ -21,8 +21,21 @@ body {
   }
 }
 
-.has-error .help-block {
-  color: red;
+.has-error  {
+  .form-control {
+    border-color: red;
+  }
+  .help-block {
+    color: red;
+  }
+}
+
+.form-group {
+  .required_field {
+    color: #e02222;
+    font-size: 12px;
+    padding-left: 2px;
+  }
 }
 
 .form-control {

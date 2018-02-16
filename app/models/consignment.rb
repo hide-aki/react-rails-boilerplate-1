@@ -8,6 +8,11 @@ class Consignment < ApplicationRecord
   belongs_to :user, class_name: 'User', foreign_key: "data_entry_by", optional: true
   belongs_to :user, class_name: 'User', foreign_key: "completed_by", optional: true
 
+  # validation
+  validates :merchant_id, :tracking_code, :receiver_name, :receiver_phone, :receiver_addr, presence: true
+  validates :tracking_code, uniqueness: true
+  validates :receiver_phone, length: {minimum: 11, maximum: 14}
+
   # Queries
   scope :newest_first, lambda { order("consignments.created_at DESC") }
 
@@ -16,4 +21,5 @@ class Consignment < ApplicationRecord
 
   # Set Consignments status value
   enum status: { success: 1, delivered: 2, not_delivered: 3, due: 4 }
+
 end

@@ -10,17 +10,17 @@
     </div>
     <div class="card-body row">
       <ul class="list-group list-group-flush show-list-group col-6">
-        <li class="list-group-item"><strong>Merchant: </strong> <%= @consignment.merchant_id %></li>
-        <li class="list-group-item"><strong>Plan: </strong> <%= @consignment.plan_id %></li>
+        <li class="list-group-item"><strong>Merchant: </strong> <%= @consignment.merchant.name %></li>
+        <li class="list-group-item"><strong>Plan: </strong> <%= @consignment.plan.present? ? @consignment.plan.name : '' %></li>
         <li class="list-group-item"><strong>Tracking Code: </strong> <%= @consignment.tracking_code %></li>
         <li class="list-group-item"><strong>Receiver name: </strong> <%= @consignment.receiver_name %></li>
         <li class="list-group-item"><strong>Receiver phone: </strong> <%= @consignment.receiver_phone %></li>
         <li class="list-group-item"><strong>Receiver Address: </strong> <%= @consignment.receiver_addr %></li>
-        <li class="list-group-item"><strong>Amount: </strong> <%= @consignment.amount %></li>
+        <li class="list-group-item"><strong>Amount: </strong> <%= number_to_currency(@consignment.amount, :unit => "BDT ", :separator => ".", :delimiter => ",") %></li>
         <li class="list-group-item"><strong>Weight: </strong> <%= @consignment.weight %></li>
-        <li class="list-group-item"><strong>Charge: </strong> <%= @consignment.charge %></li>
-        <li class="list-group-item"><strong>Additional cost: </strong> <%= @consignment.additional_cost %></li>
-        <li class="list-group-item"><strong>Compensation: </strong> <%= @consignment.compensation %></li>
+        <li class="list-group-item"><strong>Charge: </strong> <%= number_to_currency(@consignment.charge, :unit => "BDT ", :separator => ".", :delimiter => ",") %></li>
+        <li class="list-group-item"><strong>Additional cost: </strong> <%= number_to_currency(@consignment.additional_cost, :unit => "BDT ", :separator => ".", :delimiter => ",") %></li>
+        <li class="list-group-item"><strong>Compensation: </strong> <%= number_to_currency(@consignment.compensation, :unit => "BDT ", :separator => ".", :delimiter => ",") %></li>
         <li class="list-group-item"><strong>Payment status: </strong> <%= @consignment.payment_status %></li>
         <li class="list-group-item"><strong>Merchant order no: </strong> <%= @consignment.merchant_order_no  %></li>
       </ul>

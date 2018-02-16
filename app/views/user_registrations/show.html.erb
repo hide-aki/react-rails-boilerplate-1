@@ -1,0 +1,15 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-body row">
+      <h4 class="card-title col-10">User Details</h4>
+      <div class="col-2 text-right">
+        <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-primary' %>
+        <%= link_to 'Edit Password', edit_password_path(@user), class: 'btn btn-sm btn-primary' %>
+        <%= link_to 'Back', users_path, class: 'btn btn-sm btn-primary' %>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush show-list-group">
+      <li class="list-group-item"><strong>Email: </strong> <%= @user.email %></li>
+    </ul>
+  </div>
+</div>

@@ -16,6 +16,12 @@ class ConsignmentsController < ApplicationController
   # GET /consignments/new
   def new
     @consignment = Consignment.new
+    if @consignment.tracking_code.blank?
+      # code = (0..9).to_a + ('A'..'F').to_a
+      # tracking_id = (0..6).map{code.sample}.join
+      tracking_id = ([*('0'..'9'),*('A'..'Z')]-%w(0 1 I O)).sample(5).join
+      @consignment.tracking_code = tracking_id
+    end
   end
 
   # GET /consignments/1/edit

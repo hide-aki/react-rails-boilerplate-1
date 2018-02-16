@@ -1,0 +1,18 @@
+<%= simple_form_for(user, url: edit_user_path(user), method: 'put',  multipart: true) do |f| %>
+    <%= f.error_notification %>
+    <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+
+    <div class="card-body">
+
+      <div class="form-group">
+        <%= f.label :email, 'Email' %><span class="required_field"> *</span>
+        <%= f.input :email, label: false, placeholder: 'example@email.com', required: true, autofocus: true %>
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <%= f.button :submit, class: 'btn btn-sm btn-primary' %>
+    </div>
+<% end %>

@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.integer "assigned_by"
     t.integer "data_entry_by"
     t.integer "completed_by"
-    t.string "tracking_id", null: false
+    t.string "tracking_code", null: false
     t.string "receiver_name", null: false
     t.string "receiver_phone", null: false
     t.text "receiver_addr", null: false
-    t.decimal "price", precision: 8, scale: 2, default: "0.0", null: false
+    t.decimal "amount", precision: 8, scale: 2, default: "0.0", null: false
     t.float "weight", limit: 24
     t.decimal "charge", precision: 8, scale: 2, default: "0.0", null: false
     t.decimal "additional_cost", precision: 8, scale: 2, default: "0.0", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.datetime "updated_at", null: false
     t.index ["merchant_id"], name: "index_consignments_on_merchant_id"
     t.index ["rider"], name: "index_consignments_on_rider"
-    t.index ["tracking_id"], name: "index_consignments_on_tracking_id", unique: true
+    t.index ["tracking_code"], name: "index_consignments_on_tracking_id", unique: true
   end
 
   create_table "hubs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -74,6 +74,20 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_plans_on_name", unique: true
+  end
+
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_roles_on_title", unique: true
+  end
+
+  create_table "roles_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
+    t.index ["role_id"], name: "index_roles_users_on_role_id"
+    t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
