@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
   has_and_belongs_to_many :roles
+  has_one :user_profile
   has_many :plans
   has_many :hubs
   has_many :merchant
@@ -18,7 +19,8 @@ class User < ApplicationRecord
   enum status: { active: 1, block: 0 }
 
   # validation
-  validates :email, presence: true, uniqueness: true
+  validates :email, :first_name, :last_name, :phone_number, presence: true
+  validates :email, uniqueness: true
 
   # prevent from login if user is inactive
   def active_for_authentication?

@@ -36,7 +36,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.integer :gender
       t.datetime :dob
       t.string :phone_number
-      t.string :profile_picture
       t.integer :status, default: 1, null: false
 
       t.timestamps null: false

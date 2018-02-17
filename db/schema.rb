@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.string "profile_picture"
+    t.string "address"
+    t.string "business_owner"
+    t.string "representative_name"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

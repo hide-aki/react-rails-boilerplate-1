@@ -8,15 +8,42 @@
 
     <div class="card-body">
 
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <%= f.label :first_name, 'First Name' %><span class="required_field"> *</span>
+          <%= f.input :first_name, label: false, placeholder: 'First name', required: true, autofocus: true %>
+        </div>
+
+        <div class="form-group col-sm-6">
+          <%= f.label :last_name, 'Last Name' %><span class="required_field"> *</span>
+          <%= f.input :last_name, label: false, placeholder: 'Last name', required: true %>
+        </div>
+      </div>
+
       <div class="form-group">
         <%= f.label :email, 'Email' %><span class="required_field"> *</span>
-        <%= f.input :email, label: false, placeholder: 'example@email.com', required: true, autofocus: true %>
+        <%= f.input :email, label: false, placeholder: 'example@email.com', required: true %>
       </div>
 
       <div class="form-group">
         <%= f.label :password, 'Password' %><span class="required_field"> *</span>
         <%= f.input :password, label: false, required: true, placeholder: 'Password',
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone_number, 'Phone No' %><span class="required_field"> *</span>
+        <%= f.input :phone_number, label: false, placeholder: 'Phone number', required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :gender, 'Gender' %>
+        <%= f.select :gender, @gender, {include_blank: 'Please Select'}, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :dob, 'Date Of Birth' %>
+        <%= f.input :dob, as: :date, label: false %>
       </div>
 
       <div class="form-group row">
