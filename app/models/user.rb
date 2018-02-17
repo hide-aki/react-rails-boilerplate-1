@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
+  belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
   has_and_belongs_to_many :roles
   has_many :plans
   has_many :hubs
