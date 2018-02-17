@@ -2,7 +2,7 @@ module Api
   module V1
     module Rider
       class AuthController < ApiController
-        before_action :authenticate_request!, only: [:authenticate, :set_facebook_id, :delete_facebook_id]
+        before_action :authenticate_request!, only: [:set_facebook_id, :delete_facebook_id]
 
         def verify_token
           user_access_token = params[:token]
@@ -19,8 +19,17 @@ module Api
         end
 
         def authenticate
-          # customer = ApplicationRecord::Customer.find_by_id(auth_token[:customer_id])
-          render :json => true
+          unless params[:phone].present? && params[:password]
+            render json: { errors: ['`phone` `password` field required'] }, status: :bad_request
+            return
+          end
+          user = ApplicationRecord::StoreManager.find_by_phone(params[:phone])
+
+          if user.present? && user.authenticate(params[:password])
+            render json: payload(user)
+          else
+            render json: { errors: ['Invalid Phone/Password'] }, status: :unauthorized
+          end
         end
         def set_facebook_id
           unless params[:facebook_id].present?
