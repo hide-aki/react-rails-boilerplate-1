@@ -1,6 +1,14 @@
-<h1>Editing Merchant</h1>
-
-<%= render 'form', merchant: @merchant %>
-
-<%= link_to 'Show', @merchant %> |
-<%= link_to 'Back', merchants_path %>
+<div class="row justify-content-center login">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Edit Merchant</strong>
+        <div class="pull-right">
+          <%= link_to 'Show', @merchant, class:  'btn btn-sm btn-primary'%>
+          <%= link_to 'Back', merchants_path, class:  'btn btn-sm btn-danger'%>
+        </div>
+      </div>
+      <%= render 'form', merchant: @merchant %>
+    </div>
+  </div>
+</div>

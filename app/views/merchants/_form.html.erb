@@ -1,14 +1,29 @@
 <%= simple_form_for(@merchant) do |f| %>
-  <%= f.error_notification %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :hub_id %>
-    <%= f.input :name %>
-    <%= f.input :representative_name %>
-    <%= f.input :website %>
-  </div>
+    <div class="card-body">
+      <div class="form-group">
+        <%= f.label :hub_id, 'Select Hub' %>
+        <%= f.association :hub, collection: Hub.order(:name), label: false, prompt: "Choose a Hub" %>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+      <div class="form-group">
+        <%= f.label :name, 'Merchant Name' %>
+        <%= f.input :name, label: false, placeholder: 'Name' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :representative_name, 'Representative Name' %>
+        <%= f.input :representative_name, label: false, placeholder: 'Representative name' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :website, 'Merchant Website Url' %>
+        <%= f.input :website, label: false, placeholder: 'Website url' %>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <%= f.button :submit, class: 'btn btn-sm btn-primary' %>
+    </div>
 <% end %>

@@ -4,7 +4,7 @@ class CreateMerchants < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.integer :hub_id
       t.string :name
-      # t.string :business_owner
+      t.string :business_owner
       t.string :representative_name
       t.string :website
       # t.integer :created_by
@@ -12,5 +12,6 @@ class CreateMerchants < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :merchants, :name, unique: true
   end
 end

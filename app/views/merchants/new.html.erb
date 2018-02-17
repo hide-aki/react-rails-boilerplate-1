@@ -1,5 +1,11 @@
-<h1>New Merchant</h1>
-
-<%= render 'form', merchant: @merchant %>
-
-<%= link_to 'Back', merchants_path %>
+<div class="row justify-content-center login">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>New Merchant</strong>
+        <%= link_to 'Back', merchants_path, class:  'btn btn-sm btn-primary pull-right'%>
+      </div>
+      <%= render 'form', merchant: @merchant %>
+    </div>
+  </div>
+</div>

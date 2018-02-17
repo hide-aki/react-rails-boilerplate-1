@@ -1,10 +1,11 @@
 class PlansController < ApplicationController
+  load_and_authorize_resource #checking authorized or not
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
 
   # GET /plans
   # GET /plans.json
   def index
-    @plans = Plan.all
+    @plans = Plan.newest_first.page params[:page]
   end
 
   # GET /plans/1

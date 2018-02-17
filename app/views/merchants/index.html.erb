@@ -1,33 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Merchants
+      <%= link_to 'Create Merchant', new_merchant_path, class:  'btn btn-sm btn-primary pull-right'%>
+    </div>
+    <div class="card-body">
+      <table class="table table-responsive-sm table-striped">
+        <thead>
+        <tr>
+          <th>Hub</th>
+          <th>Name</th>
+          <th>Representative name</th>
+          <th>Website</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @merchants.each do |merchant| %>
+            <tr>
+              <td><%= merchant.hub_id %></td>
+              <td><%= merchant.name %></td>
+              <td><%= merchant.representative_name %></td>
+              <td><%= merchant.website %></td>
+              <td>
+                <%= link_to merchant, class: 'btn btn-success' do %>
+                    <i class="fa fa-search-plus "></i>
+                <% end %>
 
-<h1>Merchants</h1>
+                <%= link_to edit_merchant_path(merchant), class: 'btn btn-info' do %>
+                    <i class="fa fa-edit "></i>
+                <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Hub</th>
-      <th>Name</th>
-      <th>Representative name</th>
-      <th>Website</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @merchants.each do |merchant| %>
-      <tr>
-        <td><%= merchant.hub_id %></td>
-        <td><%= merchant.name %></td>
-        <td><%= merchant.representative_name %></td>
-        <td><%= merchant.website %></td>
-        <td><%= link_to 'Show', merchant %></td>
-        <td><%= link_to 'Edit', edit_merchant_path(merchant) %></td>
-        <td><%= link_to 'Destroy', merchant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Merchant', new_merchant_path %>
+                <%= link_to merchant, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } do %>
+                    <i class="fa fa-trash-o "></i>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= paginate @merchants %>
+    </div>
+  </div>
+</div>

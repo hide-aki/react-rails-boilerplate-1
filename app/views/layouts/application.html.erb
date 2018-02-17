@@ -23,15 +23,17 @@
     <%= render 'shared/sidebar' %>
 
     <main class="main">
-
-      <%= render 'shared/breadcrumb' %>
-
-      <% if !flash[:notice].blank? || !flash[:alert].blank? %>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-    <% end %>
-
+      <%#= render 'shared/breadcrumb' %>
       <div class="container-fluid">
+        <div class="alert-message ">
+          <% if !flash[:notice].blank? %>
+              <p class="notice alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if !flash[:alert].blank? %>
+              <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+
         <%= yield %>
       </div>
 

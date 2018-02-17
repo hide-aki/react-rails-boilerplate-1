@@ -1,0 +1,35 @@
+<%= simple_form_for(user, url: edit_user_path(user), method: 'put',  multipart: true) do |f| %>
+    <%= f.error_notification %>
+    <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+
+    <div class="card-body">
+
+      <div class="form-group">
+        <%= f.label :email, 'Email' %><span class="required_field"> *</span>
+        <%= f.input :email, label: false, placeholder: 'example@email.com', required: true, autofocus: true %>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :role_ids, 'User roles :', class: 'col-md-1 col-form-label' %>
+        <div class="col-md-4 col-form-label">
+          <div class="form-check checkbox">
+            <%= f.input :role_ids, as: :check_boxes, collection: @roles, label: false, class: 'form-check-input' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :status %>
+        <div class="radio-list">
+          <label><%= f.radio_button :status, 'active', checked: user.active? %> Active</label>
+          <label><%= f.radio_button :status, 'block', checked: user.block? %> Block</label>
+        </div>
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <%= f.button :submit, class: 'btn btn-sm btn-primary' %>
+    </div>
+<% end %>

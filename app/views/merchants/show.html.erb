@@ -1,24 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="animated fadeIn">
+  <div class="card">
 
-<p>
-  <strong>Hub:</strong>
-  <%= @merchant.hub_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @merchant.name %>
-</p>
-
-<p>
-  <strong>Representative name:</strong>
-  <%= @merchant.representative_name %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @merchant.website %>
-</p>
-
-<%= link_to 'Edit', edit_merchant_path(@merchant) %> |
-<%= link_to 'Back', merchants_path %>
+    <div class="card-body row">
+      <h4 class="card-title col-10">Merchant Details</h4>
+      <div class="col-2 text-right">
+        <%= link_to 'Edit', edit_merchant_path(@merchant), class: 'btn btn-primary' %>
+        <%= link_to 'Back', merchants_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush show-list-group">
+      <li class="list-group-item"><strong>Merchant Name: </strong> <%= @merchant.hub.name %></li>
+      <li class="list-group-item"><strong>Hub Name: </strong> <%= @merchant.name %></li>
+      <li class="list-group-item"><strong>Representative name: </strong> <%= @merchant.representative_name %></li>
+      <li class="list-group-item"><strong>Website: </strong> <%= @merchant.website %></li>
+    </ul>
+  </div>
+</div>

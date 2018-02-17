@@ -1,6 +1,14 @@
-<h1>Editing Hub</h1>
-
-<%= render 'form', hub: @hub %>
-
-<%= link_to 'Show', @hub %> |
-<%= link_to 'Back', hubs_path %>
+<div class="row justify-content-center login">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Edit Hub</strong>
+        <div class="pull-right">
+          <%= link_to 'Show', @hub, class:  'btn btn-sm btn-primary'%>
+          <%= link_to 'Back', hubs_path, class:  'btn btn-sm btn-danger'%>
+        </div>
+      </div>
+      <%= render 'form', hub: @hub %>
+    </div>
+  </div>
+</div>

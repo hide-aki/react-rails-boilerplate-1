@@ -2,3 +2,48 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+
+.table th, .table td {
+  padding: 0.3rem .8rem;
+  vertical-align: middle;
+}
+
+.card {
+  margin-top: 1.5rem;
+}
+
+.alert-message {
+  position: relative;
+  top: 13px;
+
+  p {
+   text-align: center;
+  }
+}
+
+.has-error  {
+  .form-control {
+    border-color: red;
+  }
+  .help-block {
+    color: red;
+  }
+}
+
+.form-group {
+  .required_field {
+    color: #e02222;
+    font-size: 12px;
+    padding-left: 2px;
+  }
+}
+
+.form-control {
+  border-radius: 4px;
+}
+
+.show-list-group {
+  .list-group-item {
+    border: 0;
+  }
+}
