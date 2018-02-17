@@ -39,7 +39,11 @@ class Ability
     end
 
     if user.has_role? :data_entry
-      can :read, :all
+      can [:create, :read, :update], Consignment
+    end
+
+    if user.has_role? :rider
+      can [:create, :read, :update], Consignment
     end
   end
 end

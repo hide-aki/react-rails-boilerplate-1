@@ -11,4 +11,5 @@ Role.create([
                 {title: 'admin'},
                 {title: 'merchant'},
                 {title: 'data_entry'},
+                {title: 'rider'},
             ])
