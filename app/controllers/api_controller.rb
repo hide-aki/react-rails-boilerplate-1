@@ -9,7 +9,7 @@ class ApiController < ActionController::API
       return
     end
     @current_user = ApplicationRecord::User.find_by_id(auth_token[:data][:user_id])
-    if !@current_user.present?
+    if !(@current_user.present? && @current_user.has_role?(auth_token[:data][:role].to_sym))
       render json: {errors: ['User not found']}, status: :unauthorized
       return
     end
