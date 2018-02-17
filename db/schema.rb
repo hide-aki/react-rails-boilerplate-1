@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20180214160958) do
 
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "consignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "merchant_id"
     t.integer "plan_id"
@@ -42,7 +48,6 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.datetime "updated_at", null: false
     t.index ["merchant_id"], name: "index_consignments_on_merchant_id"
     t.index ["rider"], name: "index_consignments_on_rider"
-    t.index ["tracking_code"], name: "index_consignments_on_tracking_id", unique: true
   end
 
   create_table "hubs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -51,19 +56,22 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.integer "updated_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_hubs_on_name", unique: true
   end
 
   create_table "merchants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "hub_id"
     t.string "name"
-    t.string "business_owner"
     t.string "representative_name"
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_merchants_on_name", unique: true
+  end
+
+  create_table "offices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -73,7 +81,6 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.integer "updated_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_plans_on_name", unique: true
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -93,6 +100,12 @@ ActiveRecord::Schema.define(version: 20180214160958) do
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

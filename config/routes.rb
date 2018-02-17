@@ -31,5 +31,18 @@ Rails.application.routes.draw do
   resources :consignments
   resources :merchants
   get 'pages/about'
+
+  namespace 'api' do
+    namespace 'v1' do
+      namespace 'rider' do
+        post '/authenticate', to: 'auth#authenticate'
+        post '/logout', to: 'auth#logout'
+        get '/profile', to: 'profiles#get_profile'
+        post '/profile', to: 'profiles#set_profile'
+      end
+    end
+  end
+
+
   root 'dashboard#index'
 end
