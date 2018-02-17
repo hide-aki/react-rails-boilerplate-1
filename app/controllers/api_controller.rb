@@ -8,8 +8,8 @@ class ApiController < ActionController::API
       render json: {errors: ['Not Authenticated']}, status: :unauthorized
       return
     end
-    @current_customer = Customer.find_by_id(auth_token[:customer_id])
-    if !@current_customer.present?
+    @current_user = ApplicationRecord::User.find_by_id(auth_token[:data][:user_id])
+    if !@current_user.present?
       render json: {errors: ['User not found']}, status: :unauthorized
       return
     end
@@ -29,6 +29,7 @@ class ApiController < ActionController::API
   end
 
   def user_id_in_token?
-    http_token && auth_token && auth_token[:customer_id].to_i
+    puts auth_token
+    http_token && auth_token && auth_token[:data][:user_id].to_i
   end
 end
