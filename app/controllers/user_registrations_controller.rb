@@ -1,4 +1,5 @@
 class UserRegistrationsController < ApplicationController
+  authorize_resource :class => false
   before_action :set_user, only: [:show, :edit, :update, :edit_password, :update_password]
   before_action :set_roles, only: [:show, :new, :create, :edit, :update, :index]
   before_action :set_gender_options, only: [:new, :create, :edit, :update]
