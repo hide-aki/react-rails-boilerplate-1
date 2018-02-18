@@ -1,0 +1,10 @@
+<%= f.simple_fields_for :user_profile, user.user_profile do |profile_form| %>
+    <div class="form-group">
+      <%= profile_form.label :profile_picture %>
+      <%= profile_form.input :profile_picture, as: :file, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= profile_form.label :address %>
+      <%= profile_form.input :address, class: 'form-control', placeholder: 'Name in English' %>
+    </div>
+<% end %>
