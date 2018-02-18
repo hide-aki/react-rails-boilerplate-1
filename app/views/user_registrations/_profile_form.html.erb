@@ -1,10 +1,33 @@
 <%= f.simple_fields_for :user_profile, user.user_profile do |profile_form| %>
     <div class="form-group">
       <%= profile_form.label :profile_picture %>
-      <%= profile_form.input :profile_picture, as: :file, class: 'form-control' %>
+      <%= profile_form.input :profile_picture, label: false, as: :file, class: 'form-control' %>
     </div>
     <div class="form-group">
       <%= profile_form.label :address %>
-      <%= profile_form.input :address, class: 'form-control', placeholder: 'Name in English' %>
+      <%= profile_form.input :address, as: :text, label: false, class: 'form-control', placeholder: 'Address' %>
     </div>
+
+    <div class="form-group">
+      <%= profile_form.label :brand, 'Merchant Brand Name' %>
+      <%= profile_form.input :brand, label: false, class: 'form-control', placeholder: 'Brand name' %>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <%= profile_form.label :business_owner, 'Business Owner Name' %>
+        <%= profile_form.input :business_owner, label: false, class: 'form-control', placeholder: 'Business Owner' %>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <%= profile_form.label :representative_name, 'Merchant Representative Name' %>
+        <%= profile_form.input :representative_name, label: false, class: 'form-control', placeholder: 'Representative name' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= profile_form.label :website, 'Merchant Website Link' %>
+      <%= profile_form.input :website, label: false, class: 'form-control', placeholder: 'Website url' %>
+    </div>
+
 <% end %>

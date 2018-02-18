@@ -23,22 +23,23 @@ class UserRegistrationsController < ApplicationController
     @user = User.new(user_params)
     @user.creator_id = current_user.id
 
-    # if @user.valid?
-    #   begin
-    #     User.transaction do
-    #       @user.save
-    #     end
-    #   rescue ActiveRecord::RecordInvalid => exception
-    #     raise exception
-    #   end
-    # end
+    if @user.valid?
+      begin
+        User.transaction do
+          @user.save
+        end
+      rescue ActiveRecord::RecordInvalid => exception
+        raise exception
+      end
+    end
 
     respond_to do |format|
-      # if @user.id
-      if @user.save
+      if @user.id
+        @user.user_profile = @user.build_user_profile(user_profile_params)
+
         format.html {redirect_to user_details_url(@user), notice: 'User has been created successfully'}
       else
-        @user.user_profile = @user.build_user_profile(user_profile_params)
+        # @user.user_profile = @user.build_user_profile(user_profile_params)
         format.html {render :new}
       end
     end
@@ -85,7 +86,7 @@ class UserRegistrationsController < ApplicationController
   end
 
   def user_profile_params
-    params.require(:user).permit(user_profile_attributes: [:profile_picture, :address, :business_owner, :representative_name, :website])[:user_profile_attributes]
+    params.require(:user).permit(user_profile_attributes: [:profile_picture, :address, :brand, :business_owner, :representative_name, :website])[:user_profile_attributes]
   end
 
   # white list parameters for updating user
