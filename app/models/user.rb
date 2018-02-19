@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :merchant
   has_many :consignments
 
+  accepts_nested_attributes_for :user_profile, update_only: true
+
   # Set user gender
   enum gender: { male: 1, female: 2, others: 3 }
 

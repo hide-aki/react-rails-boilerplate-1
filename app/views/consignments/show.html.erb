@@ -1,11 +1,15 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn noprint">
   <div class="card">
 
     <div class="card-body row">
       <h4 class="card-title col-10">Consignment Details</h4>
+
       <div class="col-2 text-right">
         <%= link_to 'Edit', edit_consignment_path(@consignment), class: 'btn btn-primary' %>
         <%= link_to 'Back', consignments_path, class: 'btn btn-primary' %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#print_consignment">
+          Print
+        </button>
       </div>
     </div>
     <div class="card-body row">
@@ -42,3 +46,32 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="print_consignment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <!--<div class="modal-header">-->
+        <!--<h4 class="modal-title">Modal title</h4>-->
+        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+          <!--<span aria-hidden="true">×</span>-->
+        <!--</button>-->
+      <!--</div>-->
+      <div class="modal-body">
+        <p>Tracking Code : <%= @consignment.tracking_code %></p>
+        <p>Receiver Name : <%= @consignment.receiver_name %></p>
+        <p>Receiver Phone No : <%= @consignment.receiver_phone %></p>
+        <p>Receiver Address : <%= @consignment.receiver_addr %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="" target="_blank" class="btn btn-primary" onclick="myFunction()">Print</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    function myFunction() {
+        window.print();
+    }
+</script>

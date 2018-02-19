@@ -18,4 +18,5 @@
 //= require vendors/Chart.min.js
 
 //= require app
+//= require views/datepicker
 //= require views/main

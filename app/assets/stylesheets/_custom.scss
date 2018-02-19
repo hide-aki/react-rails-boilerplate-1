@@ -47,3 +47,14 @@ body {
     border: 0;
   }
 }
+
+@media print
+{
+  .noprint {display:none;}
+}
+
+// Datepicker css
+#eventForm .form-control-feedback {
+  top: 0;
+  right: -15px;
+}
