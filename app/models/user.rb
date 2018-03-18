@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :creator, foreign_key: :creator_id, class_name: 'User'
+  belongs_to :creator, foreign_key: :creator_id, class_name: 'User', optional: true
   has_and_belongs_to_many :roles
   has_one :user_profile
   has_many :plans
@@ -23,6 +23,10 @@ class User < ApplicationRecord
   # validation
   validates :email, :first_name, :last_name, :phone_number, presence: true
   validates :email, uniqueness: true
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 
   # prevent from login if user is inactive
   def active_for_authentication?

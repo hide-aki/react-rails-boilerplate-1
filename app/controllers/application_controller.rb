@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-
+  prepend_view_path Rails.root.join('frontend')
   # Show cancan authorize message
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|

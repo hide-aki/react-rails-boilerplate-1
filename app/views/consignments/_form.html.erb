@@ -1,165 +1,167 @@
 <%= simple_form_for(@consignment) do |f| %>
   <%= f.error_notification %>
 
-    <div class="card-body">
-      <form id="eventForm" method="post" class="form-horizontal">
-        <div class="form-group">
-          <label class="col-xs-3 control-label">Event</label>
-          <div class="col-xs-5">
-            <input type="text" class="form-control" name="name" />
-          </div>
-        </div>
+  <div class="card-body">
+    <!--<form id="eventForm" method="post" class="form-horizontal">-->
+    <!--<div class="form-group">-->
+    <!--<label class="col-xs-3 control-label">Event</label>-->
+    <!--<div class="col-xs-5">-->
+    <!--<input type="text" class="form-control" name="name" />-->
+    <!--</div>-->
+    <!--</div>-->
 
-        <div class="form-group">
-          <label class="col-xs-3 control-label">Date</label>
-          <div class="col-xs-5 date">
-            <div class="input-group input-append date" id="datePicker">
-              <input type="text" class="form-control" name="date" />
-              <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-            </div>
-          </div>
-        </div>
+    <!--<div class="form-group">-->
+    <!--<label class="col-xs-3 control-label">Date</label>-->
+    <!--<div class="col-xs-5 date">-->
+    <!--<div class="input-group input-append date" id="datePicker">-->
+    <!--<input type="text" class="form-control" name="date" />-->
+    <!--<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
 
-        <div class="form-group">
-          <div class="col-xs-5 col-xs-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-          </div>
-        </div>
-      </form>
-
-      <div class="form-group">
-        <%= f.label :plan, 'Select Plan' %>
-        <%= f.association :plan, collection: Plan.order(:name), label: false, prompt: "Choose a Plan" %>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-sm-6">
-          <%= f.label :tracking_code, 'Tracking Code' %>
-          <%= f.input :tracking_code, disabled: true, label: false, placeholder: 'Trancking code' %>
-        </div>
-
-        <div class="form-group col-sm-6">
-          <%= f.label :merchant, 'Select Merchant' %>
-          <%= f.association :merchant, collection: Merchant.order(:name), label: false, prompt: "Choose a Merchant" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-sm-4">
-          <%= f.label :receiver_name, 'Receiver Name' %>
-          <%= f.input :receiver_name, label: false, placeholder: 'Receiver name' %>
-        </div>
-
-        <div class="form-group col-sm-4">
-          <%= f.label :receiver_phone, 'Receiver Phone' %>
-          <%= f.input :receiver_phone, label: false, placeholder: 'Receiver phone' %>
-        </div>
-
-        <div class="form-group col-sm-4">
-          <%= f.label :receiver_addr, 'Receiver Address' %>
-          <%= f.input :receiver_addr, label: false, placeholder: 'Receiver address' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-sm-4">
-          <%= f.label :amount, 'Amount' %>
-          <%= f.input :amount, label: false, placeholder: 'Amount' %>
-        </div>
-
-        <div class="form-group col-sm-4">
-          <%= f.label :weight %>
-          <%= f.input :weight, label: false, placeholder: 'Weight' %>
-        </div>
-
-        <div class="form-group col-sm-4">
-          <%= f.label :charge %>
-          <%= f.input :charge, label: false, placeholder: 'Charge' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-sm-6">
-          <%= f.label :additional_cost, 'Additional Cost' %>
-          <%= f.input :additional_cost, label: false, placeholder: 'Additional Cost' %>
-        </div>
-
-        <div class="form-group col-sm-6">
-          <%= f.label :compensation %>
-          <%= f.input :compensation, label: false, placeholder: 'Compensation' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-sm-6">
-          <%= f.label :current_hub_id, 'Current Hub' %>
-          <%= f.input :current_hub_id, collection: Hub.select(:id, :name).all, label: false, prompt: "Please Select" %>
-        </div>
-
-        <div class="form-group col-sm-6">
-          <%= f.label :target_hub_id, 'Target Hub' %>
-          <%= f.input :target_hub_id, collection: Hub.order(:name), label: false, prompt: "Please Select" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-sm-4">
-          <%= f.label :merchant_order_no, 'Merchant Order No' %>
-          <%= f.input :merchant_order_no, label: false, placeholder: 'Merchant Order No' %>
-        </div>
-
-        <div class="form-group col-sm-4">
-          <%= f.label :package_description, 'Package Description' %>
-          <%= f.input :package_description, label: false, placeholder: 'Package Description' %>
-        </div>
-
-        <div class="form-group col-sm-4">
-          <%= f.label :payment_status, 'Receiver Payment Status' %>
-          <%= f.select :payment_status, @payment_status, {include_blank: 'Please Select'}, class: 'form-control' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-sm-4">
-          <%= f.label :rider, 'Rider Id' %>
-          <%= f.input :rider, label: false, placeholder: 'Rider id' %>
-        </div>
-
-        <div class="form-group col-sm-4">
-          <%= f.label :assigned_by, 'Assigned By' %>
-          <%= f.input :assigned_by, label: false, placeholder: 'Assigned By id' %>
-        </div>
-
-        <div class="form-group col-sm-4">
-          <%= f.label :data_entry_by, 'Data Entry By' %>
-          <%= f.input :data_entry_by, label: false, placeholder: 'Data Entry By id' %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group col-sm-6">
-          <%= f.label :completed_by, 'Completed By' %>
-          <%= f.input :completed_by, label: false, placeholder: 'Completed By id' %>
-        </div>
-
-        <div class="form-group col-sm-6">
-          <%= f.label :status, 'Status' %>
-          <%= f.select :status, @status, {include_blank: 'Please Select'}, class: 'form-control' %>
-        </div>
-      </div>
-
-    </div>
+    <!--<div class="form-group">-->
+    <!--<div class="col-xs-5 col-xs-offset-3">-->
+    <!--<button type="submit" class="btn btn-default">Validate</button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
 
     <div class="form-group">
-
-      <%= f.input :delivered_on %>
-      <%= f.input :assigned_on %>
-      <%= f.input :assigned_on %>
-      <%= f.input :completed_on %>
-      <%= f.input :data_entry_on %>
+      <%= f.label :plan, 'Select Plan' %>
+      <%= f.association :plan, collection: Plan.order(:name), label: false, prompt: "Choose a Plan" %>
     </div>
 
-    <div class="card-footer">
-      <%= f.button :submit, class: 'btn btn-sm btn-primary' %>
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <%= f.label :tracking_code, 'Tracking Code' %>
+        <%= f.input :tracking_code, disabled: true, label: false, placeholder: 'Trancking code' %>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <%= f.label :merchant, 'Select Merchant' %>
+        <%#= raise %>
+        <%= f.association :merchant, label_method: :full_name, value_method: :id, collection: @merchants,
+                          label: false, prompt: "Choose a Merchant" %>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <%= f.label :receiver_name, 'Receiver Name' %>
+        <%= f.input :receiver_name, label: false, placeholder: 'Receiver name' %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <%= f.label :receiver_phone, 'Receiver Phone' %>
+        <%= f.input :receiver_phone, label: false, placeholder: 'Receiver phone' %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <%= f.label :receiver_addr, 'Receiver Address' %>
+        <%= f.input :receiver_addr, label: false, placeholder: 'Receiver address' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <%= f.label :amount, 'Amount' %>
+        <%= f.input :amount, label: false, placeholder: 'Amount' %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <%= f.label :weight %>
+        <%= f.input :weight, label: false, placeholder: 'Weight' %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <%= f.label :charge %>
+        <%= f.input :charge, label: false, placeholder: 'Charge' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <%= f.label :additional_cost, 'Additional Cost' %>
+        <%= f.input :additional_cost, label: false, placeholder: 'Additional Cost' %>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <%= f.label :compensation %>
+        <%= f.input :compensation, label: false, placeholder: 'Compensation' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <%= f.label :current_hub_id, 'Current Hub' %>
+        <%= f.input :current_hub_id, collection: Hub.select(:id, :name).all, label: false, prompt: "Please Select" %>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <%= f.label :target_hub_id, 'Target Hub' %>
+        <%= f.input :target_hub_id, collection: Hub.order(:name), label: false, prompt: "Please Select" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <%= f.label :merchant_order_no, 'Merchant Order No' %>
+        <%= f.input :merchant_order_no, label: false, placeholder: 'Merchant Order No' %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <%= f.label :package_description, 'Package Description' %>
+        <%= f.input :package_description, label: false, placeholder: 'Package Description' %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <%= f.label :payment_status, 'Receiver Payment Status' %>
+        <%= f.select :payment_status, @payment_status, {include_blank: 'Please Select'}, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-4">
+        <%= f.label :rider, 'Rider Id' %>
+        <%= f.input :rider, label: false, placeholder: 'Rider id' %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <%= f.label :assigned_by, 'Assigned By' %>
+        <%= f.input :assigned_by, label: false, placeholder: 'Assigned By id' %>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <%= f.label :data_entry_by, 'Data Entry By' %>
+        <%= f.input :data_entry_by, label: false, placeholder: 'Data Entry By id' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <%= f.label :completed_by, 'Completed By' %>
+        <%= f.input :completed_by, label: false, placeholder: 'Completed By id' %>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <%= f.label :status, 'Status' %>
+        <%= f.select :status, @status, {include_blank: 'Please Select'}, class: 'form-control' %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+
+    <%= f.input :delivered_on %>
+    <%= f.input :assigned_on %>
+    <%= f.input :assigned_on %>
+    <%= f.input :completed_on %>
+    <%= f.input :data_entry_on %>
+  </div>
+
+  <div class="card-footer">
+    <%= f.button :submit, class: 'btn btn-sm btn-primary' %>
+  </div>
 <% end %>
