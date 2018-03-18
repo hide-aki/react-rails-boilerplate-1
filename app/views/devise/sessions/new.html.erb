@@ -5,6 +5,7 @@
         <div class="card-body">
           <h1>Login</h1>
           <p class="text-muted">Sign In to your account</p>
+          <%= react_component("timer/timer") %>
           <% flash.each do |key, value| %>
               <div class="flash <%= key %>"><%= value %></div>
           <% end %>

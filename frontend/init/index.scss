@@ -1,0 +1,11 @@
+/*@import "bootstrap";*/
+/*@import "../coreui/scss/bootstrap-variables.scss";*/
+/*@import "bootstrap/scss/bootstrap.scss";*/
+/*@import "bootstrap";*/
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
+
+$simple-line-font-path: "~simple-line-icons/fonts/";
+@import "~simple-line-icons/scss/simple-line-icons.scss";
+//@import 'bootstrap/dist/css/bootstrap.css';
+@import "../coreui/scss/style.scss";
