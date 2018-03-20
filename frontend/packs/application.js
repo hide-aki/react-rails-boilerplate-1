@@ -1,5 +1,5 @@
 import "init";
-
+import Rails from "rails-ujs";
 // import "components/timer/timer";
 // import "components/auth-form/auth-form";
 // import "components/chat/chat";
@@ -20,3 +20,4 @@ const componentRequireContext = require.context("components", true);
 const ReactRailsUJS = require("react_ujs");
 
 ReactRailsUJS.useContext(componentRequireContext);
+Rails.start();
