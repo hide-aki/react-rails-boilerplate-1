@@ -12,34 +12,14 @@
   <title>Logistic Management System | <%= @page_title || "Login" %></title>
 
   <%= stylesheet_pack_tag 'application' %>
-
-  <style>
-    body {
-      background: #0e1a44c9;
-    }
-    .login .flash.alert {
-      background: mediumvioletred;
-      color: #fff;
-    }
-  </style>
 </head>
 
-<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+<body class="app flex-row align-items-center">
+<div class="container">
+  <%= yield %>
 
-  <div class="app-body">
-
-      <%# if !flash[:notice].blank? || !flash[:alert].blank? %>
-          <!--<p class="notice"><%#= notice %></p>-->
-          <!--<p class="alert"><%#= alert %></p>-->
-    <%# end %>
-
-    <div class="container">
-      <%= yield %>
-    </div>
-
+</div>
   </div>
-
-  <%= render 'shared/footer' %>
   <%= javascript_pack_tag 'application' %>
 </body>
 </html>

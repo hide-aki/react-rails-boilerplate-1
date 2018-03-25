@@ -1,14 +1,12 @@
-<div class="row justify-content-center login">
-  <div class="col-md-6">
+  <div class="row justify-content-center">
+  <div class="col-md-8">
     <div class="card-group">
       <div class="card p-4">
         <div class="card-body">
           <h1>Login</h1>
-          <!--<img src="<%#= asset_pack_path 'logo.png' %>" />-->
           <p class="text-muted">Sign In to your account</p>
-          <%= react_component("timer/timer") %>
           <% flash.each do |key, value| %>
-              <div class="flash <%= key %>"><%= value %></div>
+            <div class="flash <%= key %> alert alert-danger"><%= value %></div>
           <% end %>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="input-group mb-3">
@@ -25,21 +23,29 @@
               <%= f.password_field :password, class:"form-control",
                                    placeholder:"password", required: true, autocomplete: "off" %>
             </div>
-              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
             <div class="row">
               <div class="col-6">
                 <%= f.button :submit, "Login", class: 'btn btn-primary px-4' %>
               </div>
               <div class="col-6 text-right">
                 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-                    <%= link_to "Forgot password?", new_password_path(resource_name), class: 'btn btn-link px-0' %>
+                  <%= link_to "Forgot password?", new_password_path(resource_name), class: 'btn btn-link px-0' %>
                 <% end -%>
               </div>
             </div>
           <% end %>
         </div>
       </div>
+      <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+        <div class="card-body text-center">
+          <div>
+            <h2>Sign up</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <%= link_to "Register Now!", new_registration_path(resource_name), class: 'btn btn-primary active mt-3' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
