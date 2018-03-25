@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get '/user/:id/edit', to: 'user_registrations#edit', as: :edit_user
   # patch '/user/:id', to: 'user_registrations#update'
   put '/user/:id/edit', to: 'user_registrations#update'
-  get '/user/:id/edit_password', to: 'user_registrations#edit_password', as: :edit_password
+  get '/user/:id/edit_password', to: 'user_registrations#edit_password', as: :edit_password_inline
   put '/user/:id/edit_password', to: 'user_registrations#update_password'
   # end
 
