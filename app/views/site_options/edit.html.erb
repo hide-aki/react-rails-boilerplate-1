@@ -1,0 +1,14 @@
+<div class="row justify-content-center login">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Edit Site Option</strong>
+        <div class="pull-right">
+          <%= link_to 'Show', @site_option, class:  'btn btn-sm btn-primary'%>
+          <%= link_to 'Back', site_options_path, class:  'btn btn-sm btn-danger'%>
+        </div>
+      </div>
+      <%= render 'form', site_option: @site_option %>
+    </div>
+  </div>
+</div>

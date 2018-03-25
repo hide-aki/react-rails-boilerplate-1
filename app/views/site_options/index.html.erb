@@ -1,0 +1,41 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Site Options
+      <%= link_to 'Create Hub', new_site_option_path, class:  'btn btn-sm btn-primary pull-right'%>
+    </div>
+    <div class="card-body">
+      <table class="table table-responsive-sm table-striped">
+        <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @site_options.each do |site_option| %>
+          <tr>
+            <td><%= site_option.key %></td>
+            <td><%= site_option.value %></td>
+            <td>
+              <%= link_to site_option, class: 'btn btn-success' do %>
+                <i class="fa fa-search-plus "></i>
+              <% end %>
+
+              <%= link_to edit_site_option_path(site_option), class: 'btn btn-info' do %>
+                <i class="fa fa-edit "></i>
+              <% end %>
+
+              <%= link_to site_option, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } do %>
+                <i class="fa fa-trash-o "></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= paginate @site_options %>
+    </div>
+  </div>
+</div>

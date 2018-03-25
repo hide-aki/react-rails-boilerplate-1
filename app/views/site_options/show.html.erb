@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<div class="animated fadeIn">
+  <div class="card">
+
+    <div class="card-body row">
+      <h4 class="card-title col-10">Site Option Details</h4>
+      <div class="col-2 text-right">
+        <%= link_to 'Edit', edit_site_option_path(@site_option), class: 'btn btn-primary' %>
+        <%= link_to 'Back', site_options_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush show-list-group">
+      <li class="list-group-item"><strong>Key: </strong> <%= @site_option.key %></li>
+      <li class="list-group-item"><strong>Value: </strong> <%= @site_option.value %></li>
+    </ul>
+  </div>
+</div>

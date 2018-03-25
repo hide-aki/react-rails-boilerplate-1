@@ -1,0 +1,14 @@
+<%= simple_form_for(@site_option) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="card-body">
+    <div class="form-group">
+      <%= f.input :key %>
+      <%= f.input :value %>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <%= f.button :submit, class: 'btn btn-sm btn-primary' %>
+  </div>
+<% end %>

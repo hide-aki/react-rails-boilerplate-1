@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :site_options
   # Custom devise
   devise_for :users, controllers: {
       sessions: 'users/sessions',

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180214160958) do
+ActiveRecord::Schema.define(version: 20180325135924) do
 
   create_table "consignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "merchant_id"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.datetime "updated_at", null: false
     t.index ["merchant_id"], name: "index_consignments_on_merchant_id"
     t.index ["rider"], name: "index_consignments_on_rider"
-    t.index ["tracking_code"], name: "index_consignments_on_tracking_id", unique: true
   end
 
   create_table "hubs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -90,11 +89,12 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
-  create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.integer "age"
+  create_table "site_options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "key"
+    t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_site_options_on_key", unique: true
   end
 
   create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 20180214160958) do
     t.datetime "dob"
     t.string "phone_number"
     t.integer "status", default: 1, null: false
-    t.bigint "creator_id", null: false
+    t.bigint "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_users_on_creator_id"
